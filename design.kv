@@ -1,0 +1,96 @@
+<Menu>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Contacts Manager"
+        GridLayout:
+            cols: 2
+            GridLayout:
+                cols: 1
+                Button:
+                    text: "Find a Contact"
+                    on_press: root.findScreen()
+            GridLayout:
+                cols: 1
+                Button:
+                    text: "Manage Contacts"
+                    on_press: root.manageScreen()
+
+<ContactSearch>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Search for Contact"
+            id: mainLabel
+
+        GridLayout:
+            cols: 2
+            GridLayout:
+                cols: 1
+                TextInput:
+                    id: searchByName
+                    hint_text: "Search By Name"
+                TextInput:
+                    id: searchByPhoneNumber
+                    hint_text: "Search By Phone Number"
+                TextInput:
+                    id: searchByEmail
+                    hint_text: "Search By Email"
+                Button:
+                    text: "Search"
+                    on_press: root.search(root.ids.searchByName.text, root.ids.searchByPhoneNumber.text, root.ids.searchByEmail.text)
+                Button:
+                    text: "Back to Main Menu"
+                    on_press: root.mainmenu()
+            GridLayout:
+                cols: 1
+                Label:
+                    text: ""
+                    id: contactName
+                Label:
+                    text: ""
+                    id: contactPhone
+                Label:
+                    text: ""
+                    id: contactEmail
+
+
+
+
+<ManageContacts>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Manage Contact"
+        GridLayout:
+            cols: 1
+            TextInput:
+                id: Name
+                hint_text: "Name"
+            TextInput:
+                id: PhoneNumber
+                hint_text: "Phone Number"
+            TextInput:
+                id: Email
+                hint_text: "Email"
+            Button:
+                text: "Add"
+                on_press: root.add(root.ids.Name.text, root.ids.Email.text, root.ids.PhoneNumber.text)
+            Button:
+                text: "Delete"
+                on_press: root.delete(root.ids.Name.text, root.ids.Email.text, root.ids.PhoneNumber.text)
+            Button:
+                text: "Back to Main Menu"
+                on_press: root.mainmenu()
+
+
+
+
+
+<RootWidget>:
+    Menu:
+        name: "menu"
+    ContactSearch:
+        name: "contactsearch"
+    ManageContacts:
+        name: "managecontacts"
